@@ -21,9 +21,10 @@ app.get('/api/event', function (request, response) {
 });
 
 app.get('/api/event/:id', function (request, response) {
+    pusher.trigger()
     pusher.trigger("my-channel", "my-event", {
         message: "Hoş geldin" + request.params.id,
-    },request.params.id);
+    },request.params.id.toString());
 
     return response.status(200).send("OK");
 });
