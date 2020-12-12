@@ -16,6 +16,16 @@ app.get('/api/event', function (request, response) {
     pusher.trigger("my-channel", "my-event", {
         message: "Event Message"
     });
+
+    return response.status(200).send("OK");
+});
+
+app.get('/api/event/:id', function (request, response) {
+    pusher.trigger("my-channel", "my-event", {
+        message: "Hoş geldin" + request.params.id,
+    },request.params.id);
+
+    return response.status(200).send("OK");
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
