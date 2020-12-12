@@ -1,4 +1,5 @@
 var express = require('express');
+const PORT = process.env.PORT || 5000
  
 var cities = [{name: 'Istanbul', country: 'Turkey'}, {name: 'New York', country: 'USA'}, {name: 'London', country:'England'}];
 
@@ -8,6 +9,4 @@ app.get('/api/cities', function(request, response){
    response.send(cities);
 });
 
-app.listen(1453, function(){
-    console.log("Port dinleniyor 1453...");
-});
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
